@@ -5,14 +5,15 @@ using Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.AspNet.SignalR;
 
-[assembly: OwinStartup(typeof(LS.Startup))]
+[assembly: OwinStartup(typeof(LStest3.Startup))]
 
-namespace LS
+namespace LStest3
 {
     public class Startup
     {
         public void Configuration(IAppBuilder app)
         {
+            // Branch the pipeline here for requests that start with "/signalr"
             app.Map("/signalr", map =>
             {
                 // Setup the CORS middleware to run before SignalR.
@@ -31,7 +32,6 @@ namespace LS
                 // since this branch already runs under the "/signalr"
                 // path.
                 map.RunSignalR(hubConfiguration);
-
             });
         }
     }
