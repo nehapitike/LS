@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title> SignalR-enabled BLAS1 Web Service </title>
-    <!--by Yong-Jun Shin, UCONN CSML csml.uconn.edu (2015) -->
+    <title> SignalR-enabled SLS Web Service </title>
+    <!--by Neha Gadigi -->
 </head>
 <body>
     <!--User interface -->
-    <p> SignalR-enabled Solving Linear System using LU decomposition Web Service </p>
-    <p>Matrix #1 <input type="text" id="mat1" size="150" value="{&quot;matrixType&quot;:&quot;Matrix&quot;, &quot;data&quot;: [[1,2,1],[3,8,1],[0,4,1]], &quot;size&quot;: [3, 3]}" /> </p>
-    <p>Matrix #2 <input type="text" id="mat2" size="150" value="{&quot;matrixType&quot;:&quot;ColumnVector&quot;, &quot;data&quot;: [[2],[12],[2]], &quot;size&quot;: [3, 1]}" /></p>
+    <p> SignalR-enabled Solving Linear System Ax = b using LU decomposition Web Service </p>
+    <p>Matrix #1 <input type="text" id="mat1" size="150" value="{&quot;matrixType&quot;:&quot;Matrix A&quot;, &quot;data&quot;: [[1,2,1],[3,8,1],[0,4,1]], &quot;size&quot;: [3, 3]}" /> </p>
+    <p>Matrix #2 <input type="text" id="mat2" size="150" value="{&quot;matrixType&quot;:&quot;Matrix b&quot;, &quot;data&quot;: [[2],[12],[2]], &quot;size&quot;: [3, 1]}" /></p>
     <input type="button" id="send" value="Solve system of linear equations" />
     <p id="Product"></p>
  
