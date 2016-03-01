@@ -14,14 +14,19 @@ namespace LStest3
             int N = A.size[1]; // the number of columns in matrix A 
             int M = A.size[0]; // number of rows in matrix A
             int k = B.size[0]; // number of columns in matrix B
+            string[] D = new string[M]; // dot product D
+            string strC = "";
             if (N != M)
             {
                 Clients.Client(connID).displayError1();
+                return D;
             }
             if (N != k)
             {
                 Clients.Client(connID).displayError2(N,k);
+                return D;
             }
+            //Solving A=LU
             double[,] L = new double[M, M];
             double[,] U = new double[M, M];
             for (int i = 0; i < M; i++)
@@ -62,7 +67,8 @@ namespace LStest3
                 
                 
             }
-            //Clients.Client(connID).displayError1();
+            //Solving Ly=b
+            
             y[0, 0] = B.data[0, 0] / L[0, 0];           
  
             for (int i = 1; i < M; i++)
@@ -76,7 +82,7 @@ namespace LStest3
                     
                 }
             }
-            
+            //Solving Ux=y
             double[,] x = new double[M, 1];
             for (int i = 0; i < M; i++)
             {              
@@ -84,8 +90,7 @@ namespace LStest3
 
             }
             x[M-1, 0] = y[M-1, 0] / U[M-1, M-1];
-            string[] D = new string[M]; // dot product D
-            string strC = "";
+            
 
             for (int i = M-2; i >= 0; i--)
             {
@@ -104,11 +109,13 @@ namespace LStest3
             {
                 strC = x[i, 0].ToString();
                 D[i] = x[i, 0].ToString();
+                //Call store function on the client side to store the output
                 Clients.Client(connID).store(strC);
             }
 
-                // Call the displayProduct_3 method on the client side
-                Clients.Client(connID).displayOutput();
+                // Call the displayProduct method on the client side
+            Clients.Client(connID).displayOutput();       
+                
             return D;
         }
 
