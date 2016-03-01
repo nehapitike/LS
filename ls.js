@@ -11,13 +11,13 @@ $(function () {
         $('#send').click(function () {
             var mat1JSON = $('#mat1').val();
             var mat2JSON = $('#mat2').val();
-            // Call the matrix multiplication method on the hub.
+            // Call the LU decomposition method on the hub.
             blas.server.blas1(mat1JSON, mat2JSON, $.connection.hub.id);
         });
     });
-    // Create a function that the hub can call to display the product.
+    // Create a function that the hub can call to display the error message.
     blas.client.displayError1 = function () {        
-        document.getElementById("Product").innerHTML = 'Input Matrix should be a square matrix';   
+        document.getElementById("Product").innerHTML = 'Input Matrix A should be a square matrix';   
     };
     // Create a function that the hub can call to store the product of a matrix and column vector.
     blas.client.store = function (product) {        
